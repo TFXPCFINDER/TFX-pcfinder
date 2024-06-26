@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TFX</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .pc-result {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .pc-image {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-black">
+    <!-- HEADER -->
+    <header class="container-fluid bg-black bg-gradient text-white py-3">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand font-weight-bold" href="index.html"
+            ><img
+              src="imgs/default-white.png"
+              class="logo-top img-fluid"
+              alt="Logo"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Encontrar PC</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="produtos.html">Pré-montados</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="suporte.html">Suporte</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container py-5">
+      <div class="row">
+        <div class="col-md-6">
+          <div id="step1">
+            <h2 class="mb-4">Selecione os jogos que você joga:</h2>
+            <form id="gameForm">
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="game1"
+                  value="VALORANT"
+                />
+                <label class="form-check-label" for="game1">VALORANT</label>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="game2"
+                  value="Cyberpunk"
+                />
+                <label class="form-check-label" for="game2">Cyberpunk</label>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="game3"
+                  value="Alan Wake"
+                />
+                <label class="form-check-label" for="game3">Alan Wake</label>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="game4"
+                  value="Fortnite"
+                />
+                <label class="form-check-label" for="game4">Fortnite</label>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="validateGames()"
+              >
+                Próximo
+              </button>
+            </form>
+          </div>
+
+          <div id="step2" style="display: none">
+            <h2 class="mb-4">Quanto de espaço você precisa?</h2>
+            <form id="spaceForm">
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="space"
+                  id="space1"
+                  value="256gb"
+                />
+                <label class="form-check-label" for="space1">256GB</label>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="space"
+                  id="space2"
+                  value="512gb"
+                />
+                <label class="form-check-label" for="space2">512GB</label>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="space"
+                  id="space3"
+                  value="1tb"
+                />
+                <label class="form-check-label" for="space3">1TB</label>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="space"
+                  id="space4"
+                  value="2tb"
+                />
+                <label class="form-check-label" for="space4">2TB</label>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="nextStep('step3')"
+              >
+                Próximo
+              </button>
+            </form>
+          </div>
+
+          <div id="step3" style="display: none">
+            <h2 class="mb-4">Qual é o seu objetivo principal?</h2>
+            <form id="goalForm">
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="goal"
+                  id="goal1"
+                  value="streaming"
+                />
+                <label class="form-check-label" for="goal1"
+                  >Streaming (placa de vídeo Nvidia)</label
+                >
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="goal"
+                  id="goal2"
+                  value="gaming"
+                />
+                <label class="form-check-label" for="goal2"
+                  >Apenas jogos (placa de vídeo AMD)</label
+                >
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="submitForm()"
+              >
+                Ver Resultado
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div id="result" class="pc-result" style="display: none">
+            <h2>PC Recomendado</h2>
+            <div id="pcImage" class="my-3"></div>
+            <p id="pcDescription"></p>
+            <p id="pcPrice"></p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="container-fluid bg-black text-white py-3">
+      <div class="container">
+        <p class="text-center">TFX_PC™, criada por Matheus, Ronaldo e Luca.</p>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function nextStep(stepId) {
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step3").style.display = "none";
+        document.getElementById(stepId).style.display = "block";
+      }
+
+      function validateGames() {
+        const game1 = document.getElementById("game1").checked;
+        const game2 = document.getElementById("game2").checked;
+        const game3 = document.getElementById("game3").checked;
+        const game4 = document.getElementById("game4").checked;
+
+        if (!game1 && !game2 && !game3 && !game4) {
+          alert("Por favor, selecione pelo menos um jogo.");
+        } else {
+          nextStep("step2");
+        }
+      }
+
+      function submitForm() {
+        const space = document.querySelector('input[name="space"]:checked');
+        const goal = document.querySelector('input[name="goal"]:checked');
+
+        if (!space || !goal) {
+          alert("Por favor, selecione todas as opções.");
+          return;
+        }
+
+        const pcOptions = [
+          {
+            image: "imgs/pc1.png",
+            description: "PC Starter para jogar Valorant, Fortnite.",
+            price: "R$2.390,00",
+          },
+          {
+            image: "imgs/pc2.png",
+            description: "PC Top para jogos avançados e multitarefa.",
+            price: "R$3.790,00",
+          },
+          {
+            image: "imgs/pc3.png",
+            description: "PC Super para streaming e jogos intensivos.",
+            price: "R$5.500,00",
+          },
+          {
+            image: "imgs/pc4.png",
+            description: "PC High-End para gamers profissionais.",
+            price: "R$10.950,00",
+          },
+        ];
+
+        // por enquanto aleatório
+        const randomIndex = Math.floor(Math.random() * pcOptions.length);
+        const chosenPC = pcOptions[randomIndex];
+
+        let pcImage = `<img src="${chosenPC.image}" alt="PC Recomendado" class="pc-image">`;
+        let pcDescription = chosenPC.description;
+        let pcPrice = `Preço: ${chosenPC.price}`;
+
+        document.getElementById("pcImage").innerHTML = pcImage;
+        document.getElementById("pcDescription").textContent = pcDescription;
+        document.getElementById("pcPrice").textContent = pcPrice;
+
+        document.getElementById("result").style.opacity = "1";
+
+        setTimeout(function () {
+          document.getElementById("result").style.display = "block";
+        }, 100);
+      }
+    </script>
+  </body>
+</html>
